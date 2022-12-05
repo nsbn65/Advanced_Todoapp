@@ -230,10 +230,16 @@
             <form action="{{ route('todo.update', ['id' => $post->id]) }}" method="post">
               @csrf
               <td>
-                <input type="text" class="input-update" value="{{ $post->content }}" name="content"/>
+                <input type="text" class="input-update" value="{{ $post->name }}" name="name"/>
               </td>
               <td>
-
+                <select name = "tag_id" class = "select_tag">
+                  <option value = "1">家事</option>
+                  <option value = "2">勉強</option>
+                  <option value = "3">運動</option>
+                  <option value = "4">食事</option>
+                  <option value = "5">移動</option>
+                </select>
               </td>
               <td>
                 <button class="btn-update">更新</button>

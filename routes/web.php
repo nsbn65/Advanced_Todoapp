@@ -5,9 +5,10 @@ use App\Http\Controllers\PostController;
 
 Route::get('/',[PostController::class,'index']);
 Route::get('/home', [PostController::class, 'index']);
-Route::post('/create',[PostController::class,'create']);
-Route::post('/update/{id}',[PostController::class,'update'])->name('post.update');
-Route::post('/delete/{id}',[PostController::class,'delete'])->name('post.delete');
+Route::post('/create',[PostController::class,'create'])->name('todo.create');
+Route::post('/update/{id}',[PostController::class,'update'])->name('todo.update');
+Route::post('/delete/{id}',[PostController::class,'delete'])->name('todo.delete');
+Route::post('/delete/{id}',[PostController::class,'delete'])->name('todo.delete');
 
 
 Route::get('/dashboard', function () {

@@ -24,6 +24,7 @@ class PostController extends Controller
     public function create(PostRequest $request)
     {
         $form = $request->all();
+        unset($form['_token']);
         Todo::create($form);
         return redirect('/');
     }
