@@ -11,9 +11,5 @@ class Tag extends Model
         'name', 
         'created_at'
     ];
-    public function author()
-    {
-    return $this->belongsTo('App\Models\Todo');
-    }
     use HasFactory;
 }

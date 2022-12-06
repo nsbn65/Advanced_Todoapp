@@ -43,4 +43,12 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    public function find()
+    {
+        
+    }
+    public function search()
+    {
+        
+    }
 }
