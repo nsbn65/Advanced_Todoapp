@@ -33,12 +33,10 @@
         <form action="/create" method="post" class="content-add">
           @csrf
           <input type="text" class="input-add" name="name"/>
-          <select name = "tag_id" class = "select_tag">
-            <option value = "1">家事</option>
-            <option value = "2">勉強</option>
-            <option value = "3">運動</option>
-            <option value = "4">食事</option>
-            <option value = "5">移動</option>
+          <select class = "select_tag" id = "tag_id" name = "tag_name">
+            @foreach ($tags as $tag)
+            <option value="{{ $tag->id }}" @if(old('tag_id') == $tag->id) selected @endif>{{ $tag->name }}</option>
+            @endforeach
           </select>
           <input class="btn-add" type="submit" value="追加" />
         </form>

@@ -13,12 +13,15 @@ class PostController extends Controller
     public function index()
     {
         $posts = Todo::all();
-        /**return view('index', ['posts' => $posts]);**/
-        $tags = Tag::all();
         $user = Auth::user();
-        $posts = Todo::paginate(4);
-        $param = ['posts' => $posts, 'user' =>$user, 'tag' =>$tags];
-        return view('index', $param);
+        //$posts = Todo::paginate(4);
+        $tags = Tag::all();
+        //$param = ['posts' => $posts, 'user' =>$user, 'tags'=> $tags];
+        return view('index',[
+                            'posts' => $posts,
+                            'user' => $user,
+                            'tags' => $tags
+                            ]);
     }
 
     public function create(PostRequest $request)

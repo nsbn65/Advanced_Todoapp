@@ -13,7 +13,8 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('name')->nullable(false);
             $table->timestamp('created_at')->useCurrent()->nullable();
-            $table->integer('todo_id');
+            $table->timestamp('updated_at')->useCurrent()->nullable();
+            $table->integer('todo_id')->nullable();
         });
     }
     
