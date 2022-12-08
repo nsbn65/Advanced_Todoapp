@@ -20,17 +20,16 @@
       @endforeach
     </ul>
     @endif
-    <a class = "btn-search" href = "{{url('/search')}}">タスク検索</a>
     <div class="todo">
-      <form action="/create" method="post" class="content-add">
+      <form action="/find" method="post" class="content-find">
         @csrf
-        <input type="text" class="input-add" name="name"/>
+        <input type="text" class="input-find" name="name"/>
         <select class = "select_tag" id = "tag_id" name = "tag_id">
           @foreach ($tags as $tag)
           <option value="{{ $tag->id }}">{{ $tag->name }}</option>
           @endforeach
         </select>
-        <input class="btn-add" type="submit" value="追加" />
+        <input class="btn-find" type="submit" value="検索" />
       </form>
       <table>
         <tr>
@@ -70,6 +69,7 @@
         </tr>
         @endforeach
       </table>
+      <a class = "btn-back" href = "{{url('/')}}">戻る</a>
     </div>
   </div>
 </div>
