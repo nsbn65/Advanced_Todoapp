@@ -14,7 +14,6 @@ class PostController extends Controller
     {
         $posts = Todo::all();
         $user = Auth::user();
-        //$posts = Todo::paginate(4);
         $tags = Tag::all();
         //$param = ['posts' => $posts, 'user' =>$user, 'tags'=> $tags];
         return view('index',[
@@ -32,7 +31,7 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function update($id, PostRequest $request)
+    public function update(PostRequest $request)
     {
         $form = $request->all();
         Todo::find($request->id)->update($form);
@@ -48,9 +47,10 @@ class PostController extends Controller
 
     public function find()
     {
+        $user = Auth::user();
         
     }
-    public function search()
+    public function search(PostRequest $request)
     {
         
     }
