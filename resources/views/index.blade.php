@@ -36,7 +36,7 @@
           <input type="text" class="input-add" name="name"/>
           <select class = "select_tag" id = "tag_id" name = "tag_id">
             @foreach ($tags as $tag)
-            <option value="{{ $tag->id }}" @if(old(tag_id) == $tag->id) selected @endif>{{ $tag->name }}</option>
+            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
             @endforeach
           </select>
           <input class="btn-add" type="submit" value="追加" />
