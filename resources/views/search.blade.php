@@ -1,9 +1,7 @@
 @extends('index')
-<style>
-  
-</style>
-
 
 @section('body')
+
+<div></div>
 
 @endsection
