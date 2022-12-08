@@ -9,6 +9,7 @@
   <title>@yield('title')</title>
 </head>
 <body>
+  @yield('body')
   <div class="container">
     <div class="card">
       <div class = "card-header">
@@ -33,9 +34,9 @@
         <form action="/create" method="post" class="content-add">
           @csrf
           <input type="text" class="input-add" name="name"/>
-          <select class = "select_tag" id = "tag_id" name = "tag_name">
+          <select class = "select_tag" id = "tag_id" name = "tag_id">
             @foreach ($tags as $tag)
-            <option value="{{ $tag->id }}" @if(old('tag_id') == $tag->id) selected @endif>{{ $tag->name }}</option>
+            <option value="{{ $tag->id }}" @if(old(tag_id) == $tag->id) selected @endif>{{ $tag->name }}</option>
             @endforeach
           </select>
           <input class="btn-add" type="submit" value="追加" />

@@ -3,8 +3,7 @@
   
 </style>
 
-@section('title', 'search.blade.php')
 
-@section('content')
+@section('body')
 
 @endsection
