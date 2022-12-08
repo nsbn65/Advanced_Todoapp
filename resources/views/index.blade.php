@@ -9,8 +9,8 @@
   <title>@yield('title')</title>
 </head>
 <body>
-  @yield('body')
   <div class="container">
+    @yield('container')
     <div class="card">
       <div class = "card-header">
         <p class="todo-title">Todo List</p>
