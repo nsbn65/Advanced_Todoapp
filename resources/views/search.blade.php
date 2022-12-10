@@ -61,7 +61,7 @@
             </td>
           </form>
           <td>
-            <form action="{{ route('todo.delete', ['id' => $post->id]) }}"method="post">
+            <form action="{{ route('todo.delete', ['id'=>$post->id]) }}"method="post">
               @csrf
               <button class="btn-delete">削除</button>
             </form>

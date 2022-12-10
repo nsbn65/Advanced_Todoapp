@@ -44,18 +44,15 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function find()
+    public function search()
     {
+        return view('/search');
         $posts = Todo::all();
         $user = Auth::user();
         $tags = Tag::all();
-        return view('search',[
-                            'posts' => $posts,
-                            'user' => $user,
-                            'tags' => $tags
-                            ]);
+        
     }
-    public function search(PostRequest $request)
+    public function find(PostRequest $request)
     {
         
     }

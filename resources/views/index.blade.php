@@ -60,9 +60,9 @@
                 <input type="text" class="input-update" value="{{ $post->name }}" name="name"/>
               </td>
               <td>
-                <select class = "select_tag" id = "tag_id" name = "tag_id">
+                <select class = "select_tag" name = "tag_id">
                   @foreach ($tags as $tag)
-                  <option value="{{ $tag->id }}" @if (old($tag->id == $post->tag_id)) selected @endif>{{ $tag->name }}</option>
+                  <option value="{{ $tag->id }}" @if($tag->id == $post->tag_id) selected @endif>{{ $tag->name }}</option>
                   @endforeach
                 </select>
               </td>
