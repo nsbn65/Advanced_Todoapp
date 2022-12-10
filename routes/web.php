@@ -10,7 +10,7 @@ Route::post('/delete/{id}',[PostController::class,'delete'])->name('todo.delete'
 Route::post('/logout',[PostController::class,'logout'])->name('todo.logout');
 Route::get('/search', function () {
     return view('search');
-});
+})->name('todo.search');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
