@@ -10,8 +10,8 @@
 </head>
 <body>
   <div class="container">
-    @yield('container')
     <div class="card">
+      @yield('card')
       <div class = "card-header">
         <p class="todo-title">Todo List</p>
         <div class = "auth">

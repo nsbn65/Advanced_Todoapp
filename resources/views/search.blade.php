@@ -1,8 +1,6 @@
 @extends('index')
 
 @section('card')
-
-<div class="card">
   <div class = "card-header">
     <p class="todo-title">タスク検索</p>
       <div class = "auth">
@@ -72,6 +70,4 @@
       <a class = "btn-back" href = "{{url('/')}}">戻る</a>
     </div>
   </div>
-</div>
-
 @endsection
