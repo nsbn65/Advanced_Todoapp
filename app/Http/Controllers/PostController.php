@@ -15,7 +15,6 @@ class PostController extends Controller
         $posts = Todo::all();
         $user = Auth::user();
         $tags = Tag::all();
-        //$param = ['posts' => $posts, 'user' =>$user, 'tags'=> $tags];
         return view('index',[
                             'posts' => $posts,
                             'user' => $user,
