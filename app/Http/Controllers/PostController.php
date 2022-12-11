@@ -58,6 +58,7 @@ class PostController extends Controller
     }
     public function find(PostRequest $request)
     {
-        
+        $keyword = $request->input('keyword');
+        $tag = $request->input('tag');
     }
 }

@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'name', 
         'created_at',
         'updated_at',
     ];
-    use HasFactory;
+
+    public function Todo()
+    {
+        return $this->hasMany(Todo::class);
+    }
 }
