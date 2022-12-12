@@ -35,7 +35,7 @@
           <select class = "select_tag" id = "tag_id" name = "tag_id">
             <option value =""></option>
             @foreach ($tags as $tag)
-              <option value="{{ $tag->getTag() }}" @if($tag_category == '{{ $tag->getTag() }}') selected @endif>{{ $tag->getTag() }}</option>
+              <option value="{{ $tag->getTag() }}" @if($tag_categories == '{{ $tag->getTag() }}') selected @endif>{{ $tag->getTag() }}</option>
             @endforeach
           </select>
           <input class="btn-add" type="submit" value="検索" />
