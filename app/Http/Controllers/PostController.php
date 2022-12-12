@@ -63,7 +63,7 @@ class PostController extends Controller
     public function find(PostRequest $request)
     {
         $input = $request->all();
-        Todo::find($input);
+        //Todo::find($input);
 
         $tags = $request->input('tags');
         $keyword = $request->input('keyword');
