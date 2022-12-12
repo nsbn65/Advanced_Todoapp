@@ -29,7 +29,7 @@
       </ul>
       @endif
       <div class="todo">
-        <form action="/search/{{$keyword}}" method="GET" class="content-find">
+        <form action="/search/{$keyword}" method="GET" class="content-find">
           @csrf
           <input type="text" class="input-add" name="キーワード" value="{{ $keyword }}"/>
           <select class = "select_tag" id = "tag_id" name = "tag_id">

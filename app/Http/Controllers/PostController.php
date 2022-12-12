@@ -55,11 +55,13 @@ class PostController extends Controller
         [
         'posts' => $posts,
         'user' => $user,
-        'tags' => $tags
+        'tags' => $tags,
+        'keyword' => ''
+
         ]);
         
     }
-    public function find(PostRequest $request)
+    public function find($keyword)
     {
         $tag_categories = $request->input('tag_categories');
         $keyword = $request->input('keyword');
@@ -67,7 +69,7 @@ class PostController extends Controller
         $query->join('tag', function ($query) use ($request) {
         $query->on('todo.tag_id', '=', 'tag.id');
         });
-
+        
         if(!empty($tag)) {
             $query->where('tag', 'LIKE', $tag);
         }
@@ -78,6 +80,6 @@ class PostController extends Controller
         $posts = $query->get();
         $tags = Tag::all();
         
-        return view('search',compact('posts','tag_categories','keyword','tags','tag'));
+        return view('search',compact('posts','tag_categories','tags','tag'));
     }
 }
