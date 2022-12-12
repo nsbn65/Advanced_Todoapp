@@ -80,8 +80,12 @@ body {
   color: #fff;
 }
 
+.todo {
+  margin-bottom: 1rem;
+}
+
 .input-add {
-  width: 75%;
+  width: 70%;
   height: 30px;
   padding: 3px;
   margin-left: 20px;
@@ -176,12 +180,12 @@ table {
 }
 
 .btn-back {
-  font-size: 11px;
+  font-size: 13px;
   color: rgb(89, 89, 89);
   border: 2px solid rgb(89,89,89);
   border-radius: 4px;
   background-color: #fff;
-  padding: 7px 13px;
+  padding: 7px 17px;
   font-weight: bold;
   cursor: pointer;
   outline: none;

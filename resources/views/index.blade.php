@@ -30,16 +30,18 @@
       @endif
       <a class = "btn-search" href = "{{url('/search')}}">タスク検索</a>
       <div class="todo">
-        <form action="/create" method="post" class="content-add">
-          @csrf
-          <input type="text" class="input-add" name="name"/>
-          <select class = "select_tag" id = "tag_id" name = "tag_id">
-            @foreach ($tags as $tag)
-            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-            @endforeach
-          </select>
-          <input class="btn-add" type="submit" value="追加" />
-        </form>
+        <div class ="add-form">
+          <form action="/create" method="post" class="content-add">
+            @csrf
+            <input type="text" class="input-add" name="name"/>
+            <select class = "select_tag" id = "tag_id" name = "tag_id">
+              @foreach ($tags as $tag)
+              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+              @endforeach
+            </select>
+            <input class="btn-add" type="submit" value="追加" />
+          </form>
+        </div>
         <table>
           <tr>
             <th>作成日</th>
