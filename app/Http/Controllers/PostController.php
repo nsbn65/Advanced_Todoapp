@@ -57,29 +57,33 @@ class PostController extends Controller
         'user' => $user,
         'tags' => $tags,
         'keyword' => ''
-
         ]);
         
     }
-    public function find($keyword)
+    public function find(PostRequest $request)
     {
-        $tag_categories = $request->input('tag_categories');
+        $input = $request->all();
+        Todo::find($input);
+
+        $tags = $request->input('tags');
         $keyword = $request->input('keyword');
+        
         $query = Todo::query();
         $query->join('tag', function ($query) use ($request) {
-        $query->on('todo.tag_id', '=', 'tag.id');
+        $query->on('todo.tags_id', '=', 'tag.id');
         });
         
-        if(!empty($tag)) {
-            $query->where('tag', 'LIKE', $tag);
+        if(!empty($tags)) {
+            $query->where('tags', 'LIKE', $tags);
         }
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%{$keyword}%");
         }
 
         $posts = $query->get();
-        $tags = Tag::all();
         
-        return view('search',compact('posts','tag_categories','tags','tag'));
+        $tag_list = Tags::all();
+        
+        return view('search',compact('posts','tags','tag','tag_list'));
     }
 }

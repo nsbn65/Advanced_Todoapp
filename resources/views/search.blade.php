@@ -21,21 +21,14 @@
           </form>
         </div>
       </div>
-        @if (count($errors) > 0)
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-      </ul>
-      @endif
       <div class="todo">
-        <form action="/search/{$keyword}" method="GET" class="content-find">
+        <form action="/find" method="POST" class="content-find">
           @csrf
           <input type="text" class="input-add" name="キーワード" value="{{ $keyword }}"/>
           <select class = "select_tag" id = "tag_id" name = "tag_id">
             <option value =""></option>
-            @foreach ($tags as $tag)
-              <option value="{{ $tag->getTag() }}" @if($tag_categories == '{{ $tag->getTag() }}') selected @endif>{{ $tag->getTag() }}</option>
+            @foreach ($tag_list as $tag_item)
+              <option value="{{ $tag_item->getTags() }}" @if($tags == '{{ $tag_item->getTags() }}') selected @endif>{{ $tag_item->name }}</option>
             @endforeach
           </select>
           <input class="btn-add" type="submit" value="検索" />

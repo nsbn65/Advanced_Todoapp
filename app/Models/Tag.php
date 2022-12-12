@@ -13,7 +13,7 @@ class Tag extends Model
         'created_at',
         'updated_at',
     ];
-    public function getTag()
+    public function getTags()
     {
         return 'ID'.$this->id . ':' . $this->tag;
     }
