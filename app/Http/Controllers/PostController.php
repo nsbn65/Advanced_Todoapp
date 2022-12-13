@@ -82,7 +82,7 @@ class PostController extends Controller
 
         $posts = $query->get();
         
-        $tag_list = Tags::all();
+        //$tag_list = Tags::all();
         
         return view('search',compact('posts','tags','tag','tag_list'));
     }
