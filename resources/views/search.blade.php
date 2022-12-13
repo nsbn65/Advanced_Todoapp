@@ -24,7 +24,7 @@
       <div class="todo">
         <form action="/find" method="POST" class="content-find">
           @csrf
-          <input type="text" class="input-add" name="キーワード" value="{{ $keyword }}"/>
+          <input type="text" class="input-add" name="keyword" value="{{ $keyword }}"/>
           <select class = "select_tag" id = "tag_id" name = "tag_id">
             <option value =""></option>
             @foreach ($tags as $tags_item)
