@@ -27,8 +27,8 @@
           <input type="text" class="input-add" name="キーワード" value="{{ $keyword }}"/>
           <select class = "select_tag" id = "tag_id" name = "tag_id">
             <option value =""></option>
-            @foreach ($tags as $tag_item)
-              <option value="{{ $tag_item->getTags() }}" @if($tags == '{{ $tag_item->getTags() }}') selected @endif>{{ $tag_item->name }}</option>
+            @foreach ($tags as $tags_item)
+              <option value="{{ $tags_item->getTags() }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tags_item->name }}</option>
             @endforeach
           </select>
           <input class="btn-add" type="submit" value="検索" />

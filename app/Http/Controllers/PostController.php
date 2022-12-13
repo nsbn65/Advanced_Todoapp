@@ -51,16 +51,16 @@ class PostController extends Controller
         $posts = Todo::all();
         $user = Auth::user();
         $tags = Tag::all();
-        $tag_list = Tag::all();
-        $tag_item = Tag::all();
+        $tags_list = Tag::all();
+        $tags_item = Tag::all();
         return view('search',
         [
         'posts' => $posts,
         'user' => $user,
         'tags' => $tags,
         'keyword' => '',
-        'tag_list' => $tag_list,
-        'tag_item' => $tag_item
+        'tags_list' => $tags_list,
+        'tags_item' => $tags_item
         ]);
         
     }
@@ -69,16 +69,16 @@ class PostController extends Controller
         $input = $request->all();
         //Todo::find($input);
 
-        $tags = $request->input('tags');
+        $tag = $request->input('tag');
         $keyword = $request->input('keyword');
         
         $query = Todo::query();
-        $query->join('tag', function ($query) use ($request) {
-        $query->on('todo.tags_id', '=', 'tag.id');
+        $query->join('tags', function ($query) use ($request) {
+        $query->on('todo.tag_id', '=', 'tags.id');
         });
         
-        if(!empty($tags)) {
-            $query->where('tags', 'LIKE', $tags);
+        if(!empty($tag)) {
+            $query->where('tag', 'LIKE', $tags);
         }
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%{$keyword}%");
