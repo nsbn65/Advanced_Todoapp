@@ -68,7 +68,7 @@ class PostController extends Controller
         $keyword = $request->input('keyword');
         $tags=Tag::all();
         $query = Todo::query();
-        //$posts = $query->get();
+        $posts = $query->get();
         if(!empty($tags)) {
             $query->where('tags', 'LIKE', $tags);
         }
