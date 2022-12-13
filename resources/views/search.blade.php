@@ -53,8 +53,8 @@
               </td>
               <td>
                 <select class = "select_tag" name = "tag_id">
-                  @foreach ($tags as $tag)
-                  <option value="{{ $tag->id }}" @if($tag->id == $post->tag_id) selected @endif>{{ $tag->name }}</option>
+                  @foreach ($tags as $tags_item)
+                  <option value="{{ $tags_item->getTags() }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tags_item->name }}</option>
                   @endforeach
                 </select>
               </td>
