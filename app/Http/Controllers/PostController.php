@@ -51,12 +51,16 @@ class PostController extends Controller
         $posts = Todo::all();
         $user = Auth::user();
         $tags = Tag::all();
+        $tag_list = Tag::all();
+        $tag_item = Tag::all();
         return view('search',
         [
         'posts' => $posts,
         'user' => $user,
         'tags' => $tags,
-        'keyword' => ''
+        'keyword' => '',
+        'tag_list' => $tag_list,
+        'tag_item' => $tag_item
         ]);
         
     }
@@ -82,7 +86,7 @@ class PostController extends Controller
 
         $posts = $query->get();
         
-        $tag_list = Tag::all();
+        
         
         return view('search',compact('posts','tags','tag','tag_list'));
     }
