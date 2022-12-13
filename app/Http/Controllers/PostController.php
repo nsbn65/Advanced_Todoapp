@@ -64,17 +64,23 @@ class PostController extends Controller
     }
     public function find(PostRequest $request)
     {
+        $tags = $request->input('tags');
         $keyword = $request->input('keyword');
-        
+        $category=Tag::all();
+        $query = Todo::query();
+        $posts = $query->get();
         if(!empty($tags)) {
             $query->where('tags', 'LIKE', $tags);
         }
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%{$keyword}%");
         }
-
-        $posts = $query->get();
         
-        return view('search',compact('posts','tags'));
+        return view('search',
+        [
+            'posts' => $posts,
+            'tags' => $tags,
+            'category' => $category
+        ]);
     }
 }
