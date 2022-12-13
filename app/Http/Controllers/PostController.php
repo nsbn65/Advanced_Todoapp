@@ -58,9 +58,7 @@ class PostController extends Controller
         'posts' => $posts,
         'user' => $user,
         'tags' => $tags,
-        'keyword' => '',
-        'tags_list' => $tags_list,
-        'tags_item' => $tags_item
+        'keyword' => ''
         ]);
         
     }
@@ -77,8 +75,8 @@ class PostController extends Controller
         $query->on('todo.tag_id', '=', 'tags.id');
         });
         
-        if(!empty($tag)) {
-            $query->where('tag', 'LIKE', $tags);
+        if(!empty($tags)) {
+            $query->where('tags', 'LIKE', $tags);
         }
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%{$keyword}%");
@@ -88,6 +86,6 @@ class PostController extends Controller
         
         
         
-        return view('search',compact('posts','tags','tag','tag_list'));
+        return view('search',compact('posts','tags'));
     }
 }
