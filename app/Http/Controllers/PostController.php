@@ -55,10 +55,10 @@ class PostController extends Controller
         $tags_item = Tag::all();
         return view('search',
         [
-        'posts' => $posts,
         'user' => $user,
         'tags' => $tags,
-        'keyword' => '',
+        '$posts' => [],
+        'keyword' => ''
         ]);
         
     }
