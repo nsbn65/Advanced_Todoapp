@@ -49,7 +49,7 @@
             <form action="{{ route('todo.update', ['id' => $post->id]) }}" method="post">
               @csrf
               <td>
-                <input type="text" class="input-update" value="{{ $post->name }}" name="name"/>
+                <input type="text" class="input-update" value="{{ $post->name }}" name="keyword"/>
               </td>
               <td>
                 <select class = "select_tag" name = "tag_id">
