@@ -57,7 +57,7 @@ class PostController extends Controller
         [
         'user' => $user,
         'tags' => $tags,
-        '$posts' => [],
+        'posts' => [],
         'keyword' => ''
         ]);
         
@@ -67,12 +67,13 @@ class PostController extends Controller
         $tags = $request->input('tags');
         $keyword = $request->input('keyword');
         $tags=Tag::all();
-        
+        $user = Auth::user();
         $posts = Todo::where('name', 'LIKE', "%{$keyword}%")->orwhere('tags', 'LIKE', $tags);
         
         return view('search',
         [
             'posts' => $posts,
+            'user' => $user,
             'tags' => $tags
         ]);
     }
