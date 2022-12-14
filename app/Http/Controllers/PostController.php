@@ -58,7 +58,7 @@ class PostController extends Controller
         'posts' => $posts,
         'user' => $user,
         'tags' => $tags,
-        'keyword' => ''
+        'keyword' => '',
         ]);
         
     }
@@ -67,14 +67,8 @@ class PostController extends Controller
         $tags = $request->input('tags');
         $keyword = $request->input('keyword');
         $tags=Tag::all();
-        $query = Todo::query();
-        $posts = $query->get();
         
-        if($keyword) {
-            $query->where('name', 'LIKE', "%{$keyword}%");
-        }elseif($tags) {
-            $query->where('tags', 'LIKE', $tags);
-        }
+        $posts = Todo::where('name', 'LIKE', "%{$keyword}%")->orwhere('tags', 'LIKE', $tags);
         
         return view('search',
         [
