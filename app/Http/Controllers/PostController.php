@@ -6,6 +6,7 @@ use App\Models\Todo;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\SearchRequest;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -62,7 +63,7 @@ class PostController extends Controller
         ]);
         
     }
-    public function find(PostRequest $request)
+    public function find(SearchRequest $request)
     {
         $tags = $request->input('tags');
         $keyword = $request->input('keyword');
@@ -79,8 +80,7 @@ class PostController extends Controller
         return view('search',
         [
             'posts' => $posts,
-            'tags' => $tags,
-            'category' => $category
+            'tags' => $tags
         ]);
     }
 }
