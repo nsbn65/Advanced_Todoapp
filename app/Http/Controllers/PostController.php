@@ -49,10 +49,9 @@ class PostController extends Controller
 
     public function search()
     {
-        $posts = Todo::all();
+        $posts = Todo::get();
         $user = Auth::user();
         $tags = Tag::all();
-        $tags_list = Tag::all();
         $tags_item = Tag::all();
         return view('search',
         [
@@ -70,11 +69,11 @@ class PostController extends Controller
         $tags=Tag::all();
         $query = Todo::query();
         $posts = $query->get();
-        if(!empty($tags)) {
-            $query->where('tags', 'LIKE', $tags);
-        }
-        if(!empty($keyword)) {
+        
+        if($keyword) {
             $query->where('name', 'LIKE', "%{$keyword}%");
+        }elseif($tags) {
+            $query->where('tags', 'LIKE', $tags);
         }
         
         return view('search',
