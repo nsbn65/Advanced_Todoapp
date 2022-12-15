@@ -25,7 +25,7 @@
         <form action="/find" method="POST" class="content-find">
           @csrf
           <input type="text" class="input-add" name="keyword" value="{{ $keyword }}"/>
-          <select class = "select_tag" id = "tag_id" value = "{{$tag_name}}" name = "tag_name">
+          <select class = "select_tag" id = "tag_id" value = "{{$tag_name}}" name = "tag_id">
             <option value =""></option>
             @foreach ($tags as $id => $tag_name)
               <option value="{{ $id }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tag_name }}</option>
@@ -53,7 +53,7 @@
                 <input type="text" class="input-update" value="{{ $post->name }}" name="content"/>
               </td>
               <td>
-                <select class = "select_tag" name = "tag_name">
+                <select class = "select_tag" name = "tag_id">
                   @foreach ($tags as $tags_item)
                   <option value="{{ $tags_item->getTags() }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tags_item->tag_name }}</option>
                   @endforeach
