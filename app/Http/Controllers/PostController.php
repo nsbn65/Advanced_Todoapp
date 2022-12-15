@@ -57,14 +57,14 @@ class PostController extends Controller
 
     return view('search', 
     [
-        'tags' => [],
+        'tags' => $tags,
         'keyword' => $keyword,
         'tag_name' => $tag_name,
         'user' => $user
     ]);
     }
 
-    public function find(Request $request)
+    public function find(SearchRequest $request)
     {
         $keyword = $request->input('keyword'); 
         $tag_name = $request->input('tag_name'); 
@@ -74,7 +74,7 @@ class PostController extends Controller
 
     if (isset($keyword)) 
     {
-        $query->where('content', 'like', '%' . self::escapeLike($keyword) . '%');
+        $query->where('content', 'like', '%' .$keyword. '%');
     }
     if (isset($tag_name)) 
     {
