@@ -49,8 +49,7 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $tag = new Tag;
-        $tags = $tag->getTags();
+        $tags = Tag::all();
         $keyword = $request->input('keyword');
         $tag_name = $request->input('tag_name');
         $user = Auth::user();
