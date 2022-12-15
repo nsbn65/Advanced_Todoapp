@@ -15,15 +15,15 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:20',
+            'content' => 'required|max:20',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'タスクを入力してください。',
-            'name.max' => 'タスクは20文字以内で入力してください。'
+            'content.required' => 'タスクを入力してください。',
+            'content.max' => 'タスクは20文字以内で入力してください。'
         ];
     }
 }

@@ -10,23 +10,23 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         $tags = [
-        'name' => '家事',
+        'tag_name' => '家事',
     ];
     Tag::create($tags);
     $tags = [
-      'name' => '勉強',
+      'tag_name' => '勉強',
     ];
     Tag::create($tags);
     $tags = [
-      'name' => '運動',
+      'tag_name' => '運動',
     ];
     Tag::create($tags);
     $tags = [
-      'name' => '食事',
+      'tag_name' => '食事',
     ];
     Tag::create($tags);
     $tags = [
-      'name' => '移動',
+      'tag_name' => '移動',
     ];
     Tag::create($tags);
     }

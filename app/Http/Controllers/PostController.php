@@ -68,10 +68,12 @@ class PostController extends Controller
         $keyword = $request->input('keyword');
         $tags=Tag::all();
         $user = Auth::user();
+
         if($keyword){
-            $posts = Todo::where('name', 'LIKE', "%{$keyword}%")
-            ->where('name', 'LIKE', $tags);
+            $posts = Todo::where('content', 'LIKE', "%{$keyword}%")
+            ->where('tag_name', 'LIKE', $tags);
         }
+
         return view('search',
         [
             'posts' => $posts,

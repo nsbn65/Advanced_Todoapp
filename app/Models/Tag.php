@@ -9,13 +9,13 @@ class Tag extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 
+        'content', 
         'created_at',
         'updated_at',
     ];
     public function getTags()
     {
-        return 'ID'.$this->id . ':' . $this->tag;
+        $tags = Tag::pluck('tag_name', 'id');
     }
 
     public function Todo()
