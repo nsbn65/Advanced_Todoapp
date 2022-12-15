@@ -68,7 +68,7 @@ class PostController extends Controller
         $keyword = $request->input('keyword'); 
         $tag_name = $request->input('tag_name'); 
         $user = Auth::user();
-
+        $tags = Tag::all();
         $query = Todo::query();
 
     if (isset($keyword)) 
@@ -79,11 +79,9 @@ class PostController extends Controller
     {
         $query->where('tag_name', $tag_name);
     }
-
         $posts = $query->orderBy('tag_id', 'asc')->paginate(15);
-
         $tag = new Tag;
-        $tags = $tag->getTags();
+        //$tags = $tag->getTags();
 
     return view('search', [
         'posts' => $posts,

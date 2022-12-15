@@ -27,8 +27,8 @@
           <input type="text" class="input-add" name="keyword" value="{{ $keyword }}"/>
           <select class = "select_tag" id = "tag_id" value = "{{$tag_name}}" name = "tag_id">
             <option value =""></option>
-            @foreach ($tags as $id => $tag_name)
-              <option value="{{ $id }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tag_name }}</option>
+            @foreach ($tags as $tag)
+              <option value="{{ $tag->id }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tag->tag_name }}</option>
             @endforeach
           </select>
           <input class="btn-add" type="submit" value="検索" />
@@ -50,12 +50,12 @@
             <form action="{{ route('todo.update', ['id' => $post->id]) }}" method="post">
               @csrf
               <td>
-                <input type="text" class="input-update" value="{{ $post->name }}" name="content"/>
+                <input type="text" class="input-update" value="{{ $post->content }}" name="content"/>
               </td>
               <td>
                 <select class = "select_tag" name = "tag_id">
-                  @foreach ($tags as $tags_item)
-                  <option value="{{ $tags_item->getTags() }}" @if($tags == '{{ $tags_item->getTags() }}') selected @endif>{{ $tags_item->tag_name }}</option>
+                  @foreach ($tags as $tag)
+                  <option value="{{ $tag->id }}" @if($tags == '{{ $tag->id }}') selected @endif>{{ $post->tag->tag_name }}</option>
                   @endforeach
                 </select>
               </td>
