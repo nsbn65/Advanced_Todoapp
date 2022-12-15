@@ -34,7 +34,7 @@
           <form action="/create" method="post" class="content-add">
             @csrf
             <input type="text" class="input-add" name="content"/>
-            <select class = "select_tag" id = "tag_id" name = "tag_id">
+            <select class = "select_tag" id = "tag_id" name = "tag_name">
               @foreach ($tags as $tag)
               <option value="{{ $tag->id }}">{{ $tag->tag_name }}</option>
               @endforeach
@@ -61,7 +61,7 @@
                 <input type="text" class="input-update" value="{{ $post->content }}" name="content"/>
               </td>
               <td>
-                <select class = "select_tag" name = "tag_id">
+                <select class = "select_tag" name = "tag_name">
                   @foreach ($tags as $tag)
                   <option value="{{ $tag->id }}" @if($tag->id == $post->tag_id) selected @endif>{{ $tag->tag_name }}</option>
                   @endforeach

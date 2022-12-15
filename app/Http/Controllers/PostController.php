@@ -47,39 +47,51 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        $posts = Todo::get();
-        $user = Auth::user();
-        $tags = Tag::all();
-        $tags_item = Tag::all();
-        return view('search',
-        [
-        'user' => $user,
-        'tags' => $tags,
-        'posts' => [],
-        'keyword' => ''
-        ]);
-        
+    $tag = new Tag;
+    $tags = $tag->getTags();
+    $keyword = $request->input('keyword');
+    $tag_name = $request->input('tag_name');
+    $user = Auth::user();
+
+    return view('search', 
+    [
+    'tags' => [],
+    'keyword' => $keyword,
+    'tag_name' => $tag_name,
+    'user' => $user
+    ]);
     }
-    public function find(SearchRequest $request)
+
+    public function find(Request $request)
     {
-        $tags = $request->input('tags');
-        $keyword = $request->input('keyword');
-        $tags=Tag::all();
-        $user = Auth::user();
+    $keyword = $request->input('keyword'); 
+    $tag_name = $request->input('tag_name'); 
+    $user = Auth::user();
 
-        if($keyword){
-            $posts = Todo::where('content', 'LIKE', "%{$keyword}%")
-            ->where('tag_name', 'LIKE', $tags);
-        }
+    $query = Todo::query();
 
-        return view('search',
-        [
-            'posts' => $posts,
-            'user' => $user,
-            'tags' => $tags,
-            'keyword' => $keyword
-        ]);
+    if (isset($keyword)) 
+    {
+    $query->where('content', 'like', '%' . self::escapeLike($keyword) . '%');
+    }
+    if (isset($tag_name)) 
+    {
+    $query->where('tag_name', $tag_name);
+    }
+
+    $posts = $query->orderBy('tag_id', 'asc')->paginate(15);
+
+    $tag = new Tag;
+    $tags = $tag->getTags();
+
+    return view('search', [
+        'posts' => $posts,
+        'tags' => $tags,
+        'keyword' => $keyword,
+        'tag_name' => $tag_name,
+        'user' => $user
+    ]);
     }
 }
