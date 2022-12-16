@@ -78,7 +78,7 @@ class PostController extends Controller
     }
     if (isset($tagId)) 
     {
-        $query->where('tag_id', $tagId);
+        $query->where('tag_id', $tagId)->get();
     }
         $posts = $query->orderBy('tag_id', 'asc')->paginate(15);
         $tag = new Tag;
@@ -88,7 +88,6 @@ class PostController extends Controller
         'posts' => $posts,
         'tags' => $tags,
         'keyword' => $keyword,
-        //'tag_id' => $tag_id,
         'user' => $user,
         'tagId' => $tagId
     ]);
