@@ -51,14 +51,14 @@ class PostController extends Controller
     {
         $tags = Tag::all();
         $keyword = $request->input('keyword');
-        $tag_name = $request->input('tag_name');
+        $tagId = $request->input('tagId');
         $user = Auth::user();
 
     return view('search', 
     [
         'tags' => $tags,
         'keyword' => $keyword,
-        'tag_name' => $tag_name,
+        'tagId' => $tagId,
         'user' => $user
     ]);
     }
@@ -66,7 +66,8 @@ class PostController extends Controller
     public function find(SearchRequest $request)
     {
         $keyword = $request->input('keyword'); 
-        $tag_name = $request->input('tag_name'); 
+        $tagId = $request->input('tagId'); 
+        //dd($tagId);
         $user = Auth::user();
         $tags = Tag::all();
         $query = Todo::query();
@@ -75,9 +76,9 @@ class PostController extends Controller
     {
         $query->where('content', 'like', '%' .$keyword. '%');
     }
-    if (isset($tag_name)) 
+    if (isset($tagId)) 
     {
-        $query->where('tag_name', 'LIKE', $tag_name);
+        $query->where('tag_id', $tagId);
     }
         $posts = $query->orderBy('tag_id', 'asc')->paginate(15);
         $tag = new Tag;
@@ -87,8 +88,9 @@ class PostController extends Controller
         'posts' => $posts,
         'tags' => $tags,
         'keyword' => $keyword,
-        'tag_name' => $tag_name,
-        'user' => $user
+        //'tag_id' => $tag_id,
+        'user' => $user,
+        'tagId' => $tagId
     ]);
     }
 }
