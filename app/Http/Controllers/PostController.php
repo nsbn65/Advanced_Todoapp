@@ -77,7 +77,7 @@ class PostController extends Controller
     }
     if (isset($tag_name)) 
     {
-        $query->where('tag_name', $tag_name);
+        $query->where('tag_name', 'LIKE', $tag_name);
     }
         $posts = $query->orderBy('tag_id', 'asc')->paginate(15);
         $tag = new Tag;
