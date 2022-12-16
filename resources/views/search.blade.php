@@ -55,7 +55,7 @@
               <td>
                 <select class = "select_tag" name = "tag_id">
                   @foreach ($tags as $tag)
-                  <option value="{{ $tag->id }}" @if($tags == '{{ $tag->id }}') selected @endif>{{ $post->tag->tag_name }}</option>
+                  <option value="{{ $tag->id }}" @if($tags == '{{ $tag->id }}') selected @endif>{{ $tag->tag_name }}</option>
                   @endforeach
                 </select>
               </td>
