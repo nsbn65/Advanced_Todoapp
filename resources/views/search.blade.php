@@ -53,7 +53,7 @@
                 <input type="text" class="input-update" value="{{ $post->content }}" name="content"/>
               </td>
               <td>
-                <select class = "select_tag" name = "tagId">
+                <select class = "select_tag" name = "tag_id">
                   @foreach ($tags as $tag)
                   <option value="{{ $tag->id }}" @if($tag->id == $post->tag_id) selected @endif>{{ $tag->tag_name }}</option>
                   @endforeach
